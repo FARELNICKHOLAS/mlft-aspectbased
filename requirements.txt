@@ -3,3 +3,4 @@ tensorflow
 numpy
 fasttext
 scikit-learn
+sastrawi
