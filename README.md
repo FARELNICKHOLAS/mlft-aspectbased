@@ -1,5 +1,3 @@
-Below is the English version of your `README.md`, with structure and technical meaning preserved.
-
 ---
 
 # Aspect-Based Sentiment Analysis (ABSA) – TIX ID App Reviews
