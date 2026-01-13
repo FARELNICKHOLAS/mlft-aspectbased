@@ -1,53 +1,59 @@
+Below is the English version of your `README.md`, with structure and technical meaning preserved.
 
-# Aspect-Based Sentiment Analysis (ABSA) - TIX ID App Reviews
+---
+
+# Aspect-Based Sentiment Analysis (ABSA) – TIX ID App Reviews
 
 ![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange.svg)
 ![Streamlit](https://img.shields.io/badge/Streamlit-App-red.svg)
 
-Proyek ini adalah sistem **Analisis Sentimen Berbasis Aspek (ABSA)** yang dirancang khusus untuk mengklasifikasikan ulasan pengguna aplikasi **TIX ID** di Google Play Store. Sistem ini menggunakan pendekatan *Deep Learning* dengan arsitektur **BiLSTM** dan representasi kata **FastText** untuk memberikan wawasan granular mengenai aspek layanan tertentu dan polaritas sentimennya.
+This project is an **Aspect-Based Sentiment Analysis (ABSA)** system specifically designed to classify user reviews of the **TIX ID** mobile application from the Google Play Store. The system adopts a *Deep Learning* approach using a **BiLSTM** architecture combined with **FastText** word embeddings to provide granular insights into specific service aspects and their sentiment polarity.
 
-## Fitur Utama
-- **Single Prediction**: Input teks ulasan secara manual untuk mendapatkan hasil instan.
-- **Batch Processing**: Unggah file CSV/Excel untuk menganalisis ribuan ulasan sekaligus.
-- **Error Analysis**: Fitur evaluasi untuk membandingkan prediksi model dengan label asli (*ground truth*) lengkap dengan *Confusion Matrix*.
-- **Indonesian NLP Pipeline**: Preprocessing lengkap (Cleaning, Normalisasi Slang, Stopwords, & Stemming Sastrawi).
+## Key Features
 
----
-
-## Arsitektur Model
-Model dibangun menggunakan kombinasi:
-1. **FastText Embedding**: Dimensi 300 untuk menangani kata-kata tidak baku (*slang*) dan *typo*.
-2. **Bidirectional LSTM (BiLSTM)**: Menangkap konteks kalimat dari dua arah (maju dan mundur).
-3. **SMOTE**: Penyeimbangan data untuk mengatasi *imbalance class* pada dataset asli.
-
-Sistem mengklasifikasikan ulasan ke dalam **6 Aspek Utama**:
-- Akses Akun
-- Cakupan Layanan
-- Layanan Tiket Bioskop
-- Metode Pembayaran
-- Pembaruan Aplikasi
-- Promo dan Diskon
+* **Single Prediction**: Manually input a review text to obtain instant predictions.
+* **Batch Processing**: Upload CSV/Excel files to analyze thousands of reviews simultaneously.
+* **Error Analysis**: Evaluation feature to compare model predictions against ground truth labels, complete with a *Confusion Matrix*.
+* **Indonesian NLP Pipeline**: Comprehensive preprocessing pipeline (Text Cleaning, Slang Normalization, Stopword Removal, and Sastrawi Stemming).
 
 ---
 
-## Cara Menjalankan (Local Deployment)
+## Model Architecture
 
-### 1. Clone Repositori
+The model is built using the following components:
+
+1. **FastText Embedding**: 300-dimensional embeddings to effectively handle non-standard words (*slang*) and typographical errors.
+2. **Bidirectional LSTM (BiLSTM)**: Captures contextual information from both forward and backward directions.
+3. **SMOTE**: Data balancing technique to address class imbalance in the original dataset.
+
+The system classifies reviews into **6 Main Aspects**:
+
+* Account Access
+* Service Coverage
+* Cinema Ticket Services
+* Payment Methods
+* Application Updates
+* Promotions and Discounts
+
+---
+
+## How to Run (Local Deployment)
+
+### 1. Clone the Repository
+
 ```bash
-git clone [https://github.com/FARELNICKHOLAS/mlft-aspectbased.git](https://github.com/FARELNICKHOLAS/mlft-aspectbased.git)
+git clone https://github.com/FARELNICKHOLAS/mlft-aspectbased.git
 cd mlft-aspectbased
-
 ```
 
-### 2. Buat dan Aktifkan Virtual Environment
+### 2. Create and Activate a Virtual Environment
 
 **Windows:**
 
 ```bash
 python -m venv venv
 venv\Scripts\activate
-
 ```
 
 **macOS/Linux:**
@@ -55,75 +61,60 @@ venv\Scripts\activate
 ```bash
 python3 -m venv venv
 source venv/bin/activate
-
 ```
 
-### 3. Instal Dependensi
+### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
-
 ```
 
-### 4. Jalankan Aplikasi Streamlit
+### 4. Run the Streamlit Application
 
 ```bash
 streamlit run app.py
-
 ```
 
 ---
 
-## Hasil Evaluasi
+## Evaluation Results
 
-Berdasarkan pengujian pada *test set*, model mencapai performa sebagai berikut:
+Based on testing on the *test set*, the model achieved the following performance:
 
-| Model | Accuracy | Precision | Recall | F1-Score |
-| --- | --- | --- | --- | --- |
-| **Sentiment** | 86% | 86% | 86% | 86% |
-| **Aspect** | 88% | 81% | 82% | 82% |
+| Model         | Accuracy | Precision | Recall | F1-Score |
+| ------------- | -------- | --------- | ------ | -------- |
+| **Sentiment** | 86%      | 86%       | 86%    | 86%      |
+| **Aspect**    | 88%      | 81%       | 82%    | 82%      |
 
 ---
 
-## Struktur Direktori
+## Directory Structure
 
 ```text
 .
-├── app.py                     # Script utama aplikasi Streamlit
-├── bilstm_sentiment.h5        # Model Klasifikasi Sentimen
-├── bilstm_aspect.h5           # Model Klasifikasi Aspek
-├── tokenizer_sentiment.pkl    # Tokenizer untuk model sentimen
-├── tokenizer_aspect.pkl       # Tokenizer untuk model aspek
-├── label_encoder_aspect.pkl   # Label encoder untuk kategori aspek
-├── merged_slang_dict.json     # Kamus normalisasi kata gaul
-├── stopwords-id.txt           # Daftar kata berhenti (Indonesian)
-├── requirements.txt           # Daftar library yang dibutuhkan
+├── app.py                     # Main Streamlit application script
+├── bilstm_sentiment.h5        # Sentiment classification model
+├── bilstm_aspect.h5           # Aspect classification model
+├── tokenizer_sentiment.pkl    # Tokenizer for sentiment model
+├── tokenizer_aspect.pkl       # Tokenizer for aspect model
+├── label_encoder_aspect.pkl   # Label encoder for aspect categories
+├── merged_slang_dict.json     # Slang normalization dictionary
+├── stopwords-id.txt           # Indonesian stopwords list
+├── requirements.txt           # Required libraries
 └── README.md
-
 ```
 
 ---
 
-##  Anggota Kelompok (Kelompok 2)
+## Group Members (Group 2)
 
 1. **Wayan Farel Nickholas Sadewa** (2208561051)
 2. **David Brave Moarota Zebua** (2208561063)
 3. **I Made Treshnanda Mas** (2208561089)
 
-**Dosen Pengampu:** Dr. Anak Agung Istri Ngurah Eka Karyawati, S.Si., M.Eng.
-**Mata Kuliah:** Machine Learning For Text (MLFT) - Informatika Universitas Udayana.
-
-```
+**Course Instructor:** Dr. Anak Agung Istri Ngurah Eka Karyawati, S.Si., M.Eng.
+**Course:** Machine Learning for Text (MLFT) – Informatics, Universitas Udayana.
 
 ---
 
-### Tips Tambahan:
-1. **File `requirements.txt`**: Pastikan Anda sudah membuat file ini di repositori Anda. Jika belum, jalankan `pip freeze > requirements.txt` saat virtual environment aktif.
-2. **File Model**: Karena file `.h5` atau `.bin` (FastText) biasanya besar, pastikan Anda sudah mengunggahnya ke GitHub (jika di bawah 100MB) atau memberikan link eksternal jika menggunakan Git LFS.
-3. **Screenshot**: Jika memungkinkan, tambahkan folder `assets/` dan masukkan gambar tampilan aplikasi Streamlit Anda, lalu panggil di README dengan `![alt text](assets/screenshot.png)` agar terlihat lebih menarik.
 
-
-
-Apakah Anda ingin saya membantu membuatkan file **requirements.txt** atau bagian **Abstrak** versi bahasa Inggris untuk README ini?
-
-```
